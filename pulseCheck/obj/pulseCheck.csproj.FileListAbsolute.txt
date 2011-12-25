@@ -1,0 +1,15 @@
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.exe
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.pdb
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.exe
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.pdb
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.exe
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.pdb
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.exe
+C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\ResolveAssemblyReference.cache
