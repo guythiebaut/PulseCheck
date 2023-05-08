@@ -1,0 +1,5 @@
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Release\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Release\pulseCheck.csprojResolveAssemblyReference.cache

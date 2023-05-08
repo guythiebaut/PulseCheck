@@ -1,0 +1,10 @@
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.pdb
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.exe
+E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.pdb
+C:\Dropbox\projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.exe
+C:\Dropbox\projects\pulseCheck\pulseCheck\bin\Debug\FreezeGuard.pdb
+C:\Dropbox\projects\pulseCheck\pulseCheck\obj\Debug\pulseCheck.csproj.AssemblyReference.cache
+C:\Dropbox\projects\pulseCheck\pulseCheck\obj\Debug\pulseCheck.csproj.CoreCompileInputs.cache
+C:\Dropbox\projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.exe
+C:\Dropbox\projects\pulseCheck\pulseCheck\obj\Debug\FreezeGuard.pdb

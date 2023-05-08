@@ -12,12 +12,6 @@ namespace pulseCheck
     class Program
     {
 
-        //[System.Runtime.InteropServices.DllImport("user32.d ll")]
-        //private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-        //private const int SW_MINIMIZE = 6;
-        //private const int SW_MAXIMIZE = 3;
-        //private const int SW_RESTORE = 9;
-
         private static decimal beatsPerMinute;
         private static decimal appbeatsPerMinute;
         private static string directory;
@@ -40,16 +34,11 @@ namespace pulseCheck
 
         private static List<string> messages = new List<string>();
 
-        //private BackgroundWorker bw;
-
         private static bool called;
 
-        //[STAThread]
         static void Main(string[] args)
         {
 
-            //IntPtr winHandle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
-            //ShowWindow(winHandle, SW_MINIMIZE);
 
             Console.Title = "FreezeGuard";
 
@@ -58,13 +47,6 @@ namespace pulseCheck
 
             if (called)
             {
-
-                //BackgroundWorker bw = new BackgroundWorker();
-
-                //bw.DoWork -= new DoWorkEventHandler(worker);
-                //bw.DoWork += new DoWorkEventHandler(worker);
-                //bw.WorkerSupportsCancellation = true;
-                //bw.RunWorkerAsync();
 
                 worker();
 
@@ -77,7 +59,6 @@ namespace pulseCheck
         private static void worker()
         {
 
-            //string beat = "";
             List<string> beatData = new List<string>();
             int systole = 0;
             int diastole = 0;
@@ -103,14 +84,9 @@ namespace pulseCheck
                 if (secondsSinceStart() - (lastread + secAllowance) >= (int)Math.Floor((60 / appbeatsPerMinute)))
                 {
 
-                    //string fileName = directory + filename;
-                    //bool fileExists = File.Exists(fileName);
-                    //Console.WriteLine("fileexists: " + fileExists.ToString());
-
                     systole = lastbeat;
                     beatData.Clear();
                     beatData = readFile();
-                    //beat = readFile();
                     lastread = secondsSinceStart();
 
                     if (beatData[0] != "cannot read")
@@ -124,10 +100,8 @@ namespace pulseCheck
 
                         diastole = lastbeat;
 
-                    }
 
-                    //Console.WriteLine("systole/diastole: " + systole.ToString() + "/" + diastole.ToString());
-                    //Console.WriteLine("fileReadErrors: " + fileReadErrors.ToString());
+                    }
 
                     if (systole == diastole || fileReadErrors >= fileReadErrorsAllowed)
                     {
@@ -316,19 +290,23 @@ namespace pulseCheck
                     while (pulseData.Read())
                     {
                         if (pulseData.NodeType == XmlNodeType.Element)
+                        {
 
                             if (pulseData.LocalName.Equals("beat"))
                             {
+
                                 returnList.Add(pulseData.ReadString());
-                                //tmpInt = pulseData.ReadString();
+
                             }
 
-                        if (pulseData.LocalName.Equals("restartCommand"))
-                        {
-                            returnList.Add(pulseData.ReadString());
-                            //postProcessCommand = @" /" + pulseData.ReadString();
-                        }
+                            if (pulseData.LocalName.Equals("restartCommand"))
+                            {
 
+                                returnList.Add(pulseData.ReadString());
+
+                            }
+
+                        }
                     }
 
                     pulseData.Close();

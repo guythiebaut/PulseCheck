@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="pulseCheck">
+</Property><Property Name="Solution File" Value="E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck.sln">
+</Property><Property Name="User Options File" Value="E:\Visual Studio 2005\Projects\pulseCheck\pulseCheck.suo">
+</Property><Property Name="Date" Value="18 January 2014">
+</Property><Property Name="Time" Value="07:30">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="pulseCheck.sln" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck.sln">
+</Event><Event ErrorLevel="0" Project="" Source="pulseCheck.suo" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck.suo">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\pulseCheck.csproj" Description="Project file successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\pulseCheck.csproj">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\pulseCheck.csproj.user" Description="Project user file successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\pulseCheck.csproj.user">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\LeftRightMid.cs" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\LeftRightMid.cs">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\Program.cs" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\Program.cs">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\FreezeGuard.ico" Description="File successfully backed up as E:\Visual Studio 2005\Projects\pulseCheck\Backup\pulseCheck\FreezeGuard.ico">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\pulseCheck.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="pulseCheck" Source="pulseCheck\pulseCheck.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="pulseCheck.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="pulseCheck.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="pulseCheck" Source="pulseCheck\pulseCheck.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

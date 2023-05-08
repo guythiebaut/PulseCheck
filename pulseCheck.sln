@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pulseCheck", "pulseCheck\pulseCheck.csproj", "{F19E3D28-D68C-4F3E-8F79-E7DAD91D5B7B}"
 EndProject
 Global
