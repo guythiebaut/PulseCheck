@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Xml;
 using System.Diagnostics;
 using System.Threading;
-using System.ComponentModel;
 using System.IO;
+using System.Linq;
 
 namespace pulseCheck
 {
@@ -22,51 +21,35 @@ namespace pulseCheck
         private static string appToStart;
         private static string postProcessCommand;
         private static int fileReadErrors = 0;
-
         private static int starttime;
         private static int startday;
         private static int lastread;
         private static int lastbeat = -1;
-
         private const int secAllowance = 10;
         private const int fileReadErrorsAllowed = 5;
         private const string messagesFile = "pulseMessages.txt";
-
         private static List<string> messages = new List<string>();
-
         private static bool called;
 
         static void Main(string[] args)
         {
-
-
             Console.Title = "FreezeGuard";
-
             unpackCommandline();
             messagesInitialise();
 
-            if (called)
-            {
-
-                worker();
-
-            }
-
+            if (called) worker();
         }
-
 
         //private static void worker(object sender, DoWorkEventArgs e)
         private static void worker()
         {
-
             List<string> beatData = new List<string>();
             int systole = 0;
             int diastole = 0;
             int intBeat = 0;
-
             lastread = 0;
-            setStart();
 
+            setStart();
             messagesAdd(dateTime() + " - " + "#### FreezeGuard Active ####");
             messagesAdd(dateTime() + " - " + "#### FreezeGuard App Beats Per Minute: " + appbeatsPerMinute.ToString("0.##") + " ####");
             messagesAdd(dateTime() + " - " + "#### FreezeGuard Checks Per Minute: " + beatsPerMinute.ToString("0.##") + " ####");
@@ -77,13 +60,10 @@ namespace pulseCheck
             Console.WriteLine(dateTime() + " - " + "pulse file: " + directory + filename);
             messagesWrite();
 
-
             while (true)
             {
-
                 if (secondsSinceStart() - (lastread + secAllowance) >= (int)Math.Floor((60 / appbeatsPerMinute)))
                 {
-
                     systole = lastbeat;
                     beatData.Clear();
                     beatData = readFile();
@@ -91,16 +71,26 @@ namespace pulseCheck
 
                     if (beatData[0] != "cannot read")
                     {
-                        if (beatData[1].Trim() != "") postProcessCommand = @" /" + beatData[1];
+                        if (beatData[1].Trim() != "")
+                        {
+                            postProcessCommand = @" /" + beatData[1];
+                        }
 
-                        try { intBeat = Convert.ToInt32(beatData[0]); }
-                        catch { intBeat = 0; }
+                        try
+                        {
+                            intBeat = Convert.ToInt32(beatData[0]);
+                        }
+                        catch
+                        {
+                            intBeat = 0;
+                        }
 
-                        if (intBeat != 0) lastbeat = intBeat;
+                        if (intBeat != 0)
+                        {
+                            lastbeat = intBeat;
+                        }
 
                         diastole = lastbeat;
-
-
                     }
 
                     if (systole == diastole || fileReadErrors >= fileReadErrorsAllowed)
@@ -114,10 +104,8 @@ namespace pulseCheck
                         killProcess();
                         Console.WriteLine(dateTime() + " - " + "Restarting app...");
                         messagesAdd(dateTime() + " - " + "Restarting app...");
-
                         Console.WriteLine(dateTime() + " - " + "Command line: " + postProcessCommand);
                         messagesAdd(dateTime() + " - " + "Command line: " + postProcessCommand);
-
                         startProcess();
                         Console.WriteLine(dateTime() + " - " + "App restarted...");
                         messagesAdd(dateTime() + " - " + "App restarted...");
@@ -133,20 +121,14 @@ namespace pulseCheck
                 }
 
                 Thread.Sleep((int)Math.Floor((60 / appbeatsPerMinute) * 500));
-
             }
-
         }
-
 
         private static void unpackCommandline()
         {
-
             string cmdLn = "";
 
-
 #if DEBUG
-
             cmdLn = "";
             cmdLn += @"|processToEnd|TeboCam";
             cmdLn += @"|pulseDirectory|C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\TeboCam\TeboCam\bin\Debug\temp";
@@ -157,10 +139,7 @@ namespace pulseCheck
             cmdLn += @"|appToStart|C:\Documents and Settings\Jagara\My Documents\Visual Studio 2005\Projects\TeboCam\TeboCam\bin\Debug\TeboCam.exe";
             cmdLn += @"|firstPulse|1";
             cmdLn += @"|command|restart active";
-
-
 #else
-
             foreach (string @arg in Environment.GetCommandLineArgs())
             {
                 //Console.WriteLine("###########################ARG#################################");
@@ -174,9 +153,7 @@ namespace pulseCheck
                 called = false;
                 return;
             }
-
 #endif
-
             string[] tmpCmd = cmdLn.Split('|');
 
             for (int i = 1; i < tmpCmd.GetLength(0); i++)
@@ -192,7 +169,6 @@ namespace pulseCheck
                 if (tmpCmd[i] == "command") postProcessCommand += @" /" + tmpCmd[i + 1];
                 i++;
             }
-
 
             pulseFile = directory + filename;
 
@@ -211,19 +187,15 @@ namespace pulseCheck
             //Console.WriteLine(postProcessCommand);
 
             called = true;
-
         }
-
 
         private static void messagesInitialise()
         {
-
             string msgFile = messageDirectory + @"\" + messagesFile;
             string line = null;
 
             if (!File.Exists(msgFile))
             {
-
                 try
                 {
                     TextWriter tw = new StreamWriter(msgFile);
@@ -232,7 +204,6 @@ namespace pulseCheck
                     tw.Close();
                 }
                 catch { }
-
             }
 
             try
@@ -243,13 +214,12 @@ namespace pulseCheck
                 tr.Close();
                 tr = null;
             }
-            catch { }
 
+            catch { }
         }
 
         private static void messagesWrite()
         {
-
             string msgFile = messageDirectory + @"\" + messagesFile;
 
             try
@@ -261,8 +231,8 @@ namespace pulseCheck
                 }
                 tw.Close();
             }
-            catch { }
 
+            catch { }
         }
 
         private static void messagesAdd(string line)
@@ -271,124 +241,92 @@ namespace pulseCheck
             messages.Add(line);
         }
 
-
         private static List<string> readFile()
         {
-
             List<string> returnList = new List<string>();
             //string tmpInt = "";
             fileReadErrors = 0;
-
             XmlTextReader pulseData = new XmlTextReader(pulseFile);
-
 
             do
             {
-
                 try
                 {
                     while (pulseData.Read())
                     {
                         if (pulseData.NodeType == XmlNodeType.Element)
                         {
-
-                            if (pulseData.LocalName.Equals("beat"))
+                            switch (pulseData.LocalName)
                             {
-
-                                returnList.Add(pulseData.ReadString());
-
+                                case "beat":
+                                    returnList.Add(pulseData.ReadString());
+                                    break;
+                                case "restartCommand":
+                                    returnList.Add(pulseData.ReadString());
+                                    break;
+                                default:
+                                    break;
                             }
-
-                            if (pulseData.LocalName.Equals("restartCommand"))
-                            {
-
-                                returnList.Add(pulseData.ReadString());
-
-                            }
-
                         }
                     }
 
                     pulseData.Close();
                     fileReadErrors = 0;
-
                 }
                 catch
                 {
-
                     pulseData.Close();
                     fileReadErrors++;
-
                 }
-
             } while (fileReadErrors > 0 && (fileReadErrors < fileReadErrorsAllowed));
-
 
             if (fileReadErrors == 0)
             {
-                //return tmpInt;
-                return returnList;//
+                return returnList;
             }
             else
             {
-                //return "cannot read";
                 returnList.Clear();
                 returnList.Add("cannot read");
                 return returnList;
             }
-
         }
-
 
         private static bool killProcess()
         {
-
             bool processKilled = false;
             int attempts = 0;
 
             try
             {
-
                 while (processKilled == false && attempts < 10)
                 {
+                    Process[] processesToEnd = Process.GetProcesses().Where(x => x.ProcessName == processToEnd).ToArray();
 
-                    Process[] processes = Process.GetProcesses();
-
-                    foreach (Process process in processes)
+                    foreach (Process process in processesToEnd)
                     {
-                        if (process.ProcessName == processToEnd)
-                        {
-                            process.Kill();
-                            processKilled = true;
-                        }
-
+                        process.Kill();
+                        processKilled = true;
                     }
 
                     attempts++;
                     if (!processKilled) Thread.Sleep(1000);
-
                 }
 
                 return processKilled;
-
             }
             catch
             {
-
                 return false;
-
             }
-
         }
 
         private static void startProcess()
         {
-
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = appToStart;
             startInfo.Arguments = postProcessCommand;
             Process.Start(startInfo);
-
         }
 
         private static void setStart()
@@ -399,12 +337,9 @@ namespace pulseCheck
 
         private static int secondsSinceStart()
         {
-
             int secsInDay = 86400;
             int thisday = Convert.ToInt32(DateTime.Now.ToString("yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture));
             int daysSinceStart = Math.Abs(thisday - startday);
-
-
             int result = (daysSinceStart * secsInDay) - starttime + secondsSinceMidnight();
             return result;
         }
@@ -421,14 +356,8 @@ namespace pulseCheck
 
         private static string dateTime()
         {
-
             string tmpStr = DateTime.Now.ToString("yyyyMMdd - HH:mm:ss:fff", System.Globalization.CultureInfo.InvariantCulture);
             return tmpStr;
-
         }
-
-
-
-
     }
 }
